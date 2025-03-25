@@ -6,8 +6,6 @@ use App\Http\Requests\StoreMarcaRequest;
 use App\Http\Requests\UpdateMarcaRequest;
 use App\Models\Marca;
 use App\Services\MarcaService;
-use Illuminate\Contracts\Cache\Store;
-use Illuminate\Http\Request;
 
 class MarcaController extends Controller
 {
@@ -37,7 +35,7 @@ class MarcaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreMarcaRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreMarcaRequest $request)
@@ -60,10 +58,10 @@ class MarcaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Marca $marca
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Marca $marca)
     {
         return view('marcas.edit', compact('marca'));
     }
@@ -71,8 +69,8 @@ class MarcaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdateMarcaRequest  $request
+     * @param   Marca $marca
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateMarcaRequest $request, Marca $marca)
@@ -84,7 +82,7 @@ class MarcaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Marca $marca
      * @return \Illuminate\Http\Response
      */
     public function destroy(Marca $marca)
