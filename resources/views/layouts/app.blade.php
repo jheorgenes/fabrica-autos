@@ -53,6 +53,7 @@
             <h4 class="text-white">Menu</h4>
             <nav class="nav nav-pills flex-column">
                 <a href="{{ route('marcas.index') }}" class="nav-link">Marcas</a>
+                <a href="{{ route('modelos.index') }}" class="nav-link">Modelos</a>
             </nav>
         </div>
 

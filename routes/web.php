@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MarcaController;
+use App\Http\Controllers\ModeloController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::resource('marcas', MarcaController::class)->except('show');
+Route::resource('modelos', ModeloController::class)->except('show');
