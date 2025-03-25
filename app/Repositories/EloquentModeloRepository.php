@@ -45,3 +45,4 @@ class EloquentModeloRepository implements ModeloRepository
         });
     }
 }
+ 
