@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('marcas', MarcaController::class);
+Route::resource('marcas', MarcaController::class)->except('show');
