@@ -7,6 +7,7 @@
     <h1>Lista de Marcas</h1>
     <a href="{{ route('marcas.create') }}" class="btn btn-primary">Nova Marca</a>
     @include('partials.messages')
+    @include('partials.errors')
     <table class="table mt-4">
         <thead>
             <tr>

@@ -87,7 +87,11 @@ class MarcaController extends Controller
      */
     public function destroy(Marca $marca)
     {
-        $this->marcaService->excluir($marca);
-        return redirect()->route('marcas.index')->with('success', 'Marca excluída com sucesso!');
+        try {
+            $this->marcaService->excluir($marca);
+            return redirect()->route('marcas.index')->with('success', 'Marca excluída com sucesso!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 }

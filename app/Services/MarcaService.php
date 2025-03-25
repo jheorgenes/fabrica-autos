@@ -26,6 +26,9 @@ class MarcaService
 
     public function excluir(Marca $marca)
     {
+        if($marca->modelos()->exists()) {
+            throw new \Exception('A marca possui modelos cadastrados e não pode ser excluída.');
+        }
         return $this->marcaRepository->excluir($marca);
     }
 }
