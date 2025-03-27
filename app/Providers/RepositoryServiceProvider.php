@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\CarroRepository;
+use App\Repositories\EloquentCarroRepository;
 use App\Repositories\EloquentMarcaRepository;
 use App\Repositories\EloquentModeloRepository;
 use App\Repositories\MarcaRepository;
@@ -12,6 +14,7 @@ class RepositoryServiceProvider extends ServiceProvider
 {
     public array $bindings = [
         MarcaRepository::class => EloquentMarcaRepository::class,
-        ModeloRepository::class => EloquentModeloRepository::class
+        ModeloRepository::class => EloquentModeloRepository::class,
+        CarroRepository::class => EloquentCarroRepository::class
     ];
 }

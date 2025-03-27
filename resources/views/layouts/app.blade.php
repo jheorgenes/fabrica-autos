@@ -54,6 +54,7 @@
             <nav class="nav nav-pills flex-column">
                 <a href="{{ route('marcas.index') }}" class="nav-link">Marcas</a>
                 <a href="{{ route('modelos.index') }}" class="nav-link">Modelos</a>
+                <a href="{{ route('carros.index') }}" class="nav-link">Carros</a>
             </nav>
         </div>
 
