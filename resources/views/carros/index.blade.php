@@ -38,12 +38,6 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Excluir</button>
                         </form>
-                        {{-- @if (!$carro->vendido)
-                            <form action="{{ route('carros.marcar_vendido', $carro->id) }}" method="POST" style="display: inline;">
-                                @csrf
-                                <button type="submit" class="btn btn-success">Marcar como Vendido</button>
-                            </form>
-                        @endif --}}
                     </td>
                 </tr>
             @endforeach
