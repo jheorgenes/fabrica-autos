@@ -36,7 +36,10 @@ class VendaService
             throw new \Exception('O carro selecionado ja foi vendido.');
         }
 
-        $preco = $carro->preco;
+        $precoOriginal = $carro->preco;
+        $acrescimo = 0;
+        $desconto = 0;
+        $opcionais = [];
         $cor = $carro->cor;
         $marca = $carro->modelo?->marca?->nome;
 
@@ -47,19 +50,23 @@ class VendaService
 
             // Acréscimo de 5% se não for Fiat
             if ($marca !== 'Fiat' && !empty($opcionais)) {
-                $preco *= 1.05;
+                $acrescimo = $precoOriginal * 0.05;
             }
         }
 
+        $precoFinal = $precoOriginal + $acrescimo - $desconto;
+
         // Desconto de 7% se for Hyundai e for Branco ou Prata
         if($marca === 'Hyundai' && in_array($cor, ['Branco', 'Prata'])) {
-            $preco *= 0.93;
+            $desconto = $precoOriginal * 0.07;
         }
 
         $venda = $this->vendaRepository->criar([
             'carro_id' => $carro->id,
-            'preco_final' => $preco,
-            'opcionais' => $opcionais
+            'preco_final' => $precoFinal,
+            'opcionais' => $opcionais,
+            'valor_acrescimo' => $acrescimo,
+            'valor_desconto' => $desconto
         ]);
 
         $this->carroRepository->marcarComoVendido($carro, true);

@@ -9,7 +9,7 @@ class Venda extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['carro_id', 'preco_final', 'opcionais'];
+    protected $fillable = ['carro_id', 'preco_final', 'opcionais', 'valor_acrescimo', 'valor_desconto'];
 
     protected $casts = ['opcionais' => 'array'];
 

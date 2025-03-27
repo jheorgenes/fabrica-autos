@@ -13,13 +13,15 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Carro</th>
+                <th>Placa</th>
                 <th>Marca</th>
                 <th>Modelo</th>
                 <th>Cor</th>
+                <th>Preço Original</th>
+                <th>Acréscimo</th>
+                <th>Desconto</th>
                 <th>Preço Final</th>
                 <th>Opcionais</th>
-                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +32,9 @@
                     <td>{{ $venda->carro->modelo->marca->nome }}</td>
                     <td>{{ $venda->carro->modelo->nome }}</td>
                     <td>{{ $venda->carro->cor }}</td>
+                    <td>R$ {{ number_format($venda->carro->preco, 2, ',', '.') }}</td>
+                    <td>R$ {{ number_format($venda->valor_acrescimo ?? 0, 2, ',', '.') }}</td>
+                    <td>R$ {{ number_format($venda->valor_desconto ?? 0, 2, ',', '.') }}</td>
                     <td>R$ {{ number_format($venda->preco_final, 2, ',', '.') }}</td>
                     <td>
                         @if (!empty($venda->opcionais))
@@ -54,7 +59,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="6" class="text-end">
+                <td colspan="9" class="text-end">
                     <strong>Total vendido:</strong> R$ {{ $totalVendas }}
                 </td>
             </tr>
