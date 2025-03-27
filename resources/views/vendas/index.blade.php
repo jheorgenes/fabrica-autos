@@ -52,6 +52,13 @@
                 </tr>
             @endforeach
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6" class="text-end">
+                    <strong>Total vendido:</strong> R$ {{ $totalVendas }}
+                </td>
+            </tr>
+        </tfoot>
     </table>
 </div>
 @endsection

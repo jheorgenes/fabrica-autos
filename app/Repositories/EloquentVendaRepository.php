@@ -14,6 +14,11 @@ class EloquentVendaRepository implements VendaRepository
         return Venda::with(['carro.modelo.marca'])->get();
     }
 
+    public function totalVendas(): float
+    {
+        return (float) Venda::sum('preco_final');
+    }
+
     public function criar(array $dados): Venda
     {
         return DB::transaction(function () use ($dados) {

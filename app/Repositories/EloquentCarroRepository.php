@@ -54,24 +54,14 @@ class EloquentCarroRepository implements CarroRepository
         });
     }
 
-    public function marcarComoVendido(Carro $carro): void
+    public function marcarComoVendido(Carro $carro, Bool $vendido = true): void
     {
-        DB::transaction(function () use ($carro) {
+        DB::transaction(function () use ($carro, $vendido) {
             try {
-                $carro->update(['vendido' => true]);
+                $carro->update(['vendido' => $vendido]);
             } catch (QueryException $e) {
-                throw new \Exception('Erro ao marcar o carro como vendido.');
-            }
-        });
-    }
-
-    public function desmarcarComoVendido(Carro $carro): void
-    {
-        DB::transaction(function () use ($carro) {
-            try {
-                $carro->update(['vendido' => false]);
-            } catch (QueryException $e) {
-                throw new \Exception('Erro ao desmarcar o carro como vendido.');
+                $mensagem = $vendido ? 'Erro ao marcar o carro como vendido.' : 'Erro ao desmarcar o carro como vendido.';
+                throw new \Exception($mensagem);
             }
         });
     }

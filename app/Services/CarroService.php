@@ -55,22 +55,13 @@ class CarroService
         $this->carroRepository->excluir($carro);
     }
 
-    public function marcarComoVendido(int $id): void
+    public function marcarComoVendido(int $id, bool $boolean): void
     {
         $carro = $this->carroRepository->buscarPorId($id);
         if (!$carro) {
             throw new \Exception('Carro não encontrado.');
         }
-        $this->carroRepository->marcarComoVendido($carro);
-    }
-
-    public function desmarcarComoVendido(int $id): void
-    {
-        $carro = $this->carroRepository->buscarPorId($id);
-        if (!$carro) {
-            throw new \Exception('Carro não encontrado.');
-        }
-        $this->carroRepository->marcarComoVendido($carro);
+        $this->carroRepository->marcarComoVendido($carro, $boolean);
     }
 
     private function validarRegrasDeNegocio(array &$dados): void
@@ -83,15 +74,5 @@ class CarroService
             ($marcaNome === 'Volkswagen' && $dados['cor'] !== 'Prata')) {
             throw new \Exception('A cor selecionada não é permitida para esta marca.');
         }
-
-        // // Regra de opcionais apenas para carros pretos (acréscimo de 5% se não for Fiat)
-        // if ($dados['cor'] === 'Preto' && $marcaNome !== 'Fiat') {
-        //     $dados['preco'] *= 1.05;
-        // }
-
-        // // Regra de desconto de 7% para Hyundai Branco ou Prata
-        // if ($marcaNome === 'Hyundai' && in_array($dados['cor'], ['Branco', 'Prata'])) {
-        //     $dados['preco'] *= 0.93;
-        // }
     }
 }

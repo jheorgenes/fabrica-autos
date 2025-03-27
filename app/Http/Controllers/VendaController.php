@@ -19,7 +19,8 @@ class VendaController extends Controller
     public function index()
     {
         $vendas = $this->vendaService->listar();
-        return view('vendas.index', compact('vendas'));
+        $totalVendas = $this->vendaService->totalVendas();
+        return view('vendas.index', compact('vendas', 'totalVendas'));
     }
 
     /**

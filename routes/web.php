@@ -24,5 +24,5 @@ Route::get('/', function () {
 Route::resource('marcas', MarcaController::class)->except('show');
 Route::resource('modelos', ModeloController::class)->except('show');
 Route::resource('carros', CarroController::class)->except('show');
-Route::post('carros/{id}/marcar-vendido', [CarroController::class, 'marcarComoVendido'])->name('carros.marcar_vendido');
+// Route::post('carros/{id}/marcar-vendido', [CarroController::class, 'marcarComoVendido'])->name('carros.marcar_vendido');
 Route::resource('vendas', VendaController::class)->only(['index', 'create', 'store', 'destroy']);

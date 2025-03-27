@@ -18,6 +18,11 @@ class VendaService
         return $this->vendaRepository->listar();
     }
 
+    public function totalVendas()
+    {
+        return number_format($this->vendaRepository->totalVendas(), 2, ',', '.');
+    }
+
     public function carrosDisponiveis(): Collection
     {
         return $this->carroRepository->listarDisponiveis();
@@ -57,7 +62,7 @@ class VendaService
             'opcionais' => $opcionais
         ]);
 
-        $this->carroRepository->marcarComoVendido($carro);
+        $this->carroRepository->marcarComoVendido($carro, true);
 
         return $venda;
     }
@@ -76,7 +81,7 @@ class VendaService
             throw new \Exception('Não é possível excluir. Carro ainda não está marcado como vendido');
         }
 
-        $this->carroRepository->desmarcarComoVendido($carro);
+        $this->carroRepository->marcarComoVendido($carro, false);
         $this->vendaRepository->excluir($venda);
     }
 }

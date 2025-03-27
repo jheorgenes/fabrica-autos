@@ -110,7 +110,7 @@ class CarroController extends Controller
     public function marcarComoVendido(int $id)
     {
         try {
-            $this->carroService->marcarComoVendido($id);
+            $this->carroService->marcarComoVendido($id, true);
             return redirect()->route('carros.index')->with('success', 'Carro marcado como vendido com sucesso!');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);

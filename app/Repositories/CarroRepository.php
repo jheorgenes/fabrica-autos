@@ -12,7 +12,6 @@ interface CarroRepository
     public function criar(array $dados): Carro;
     public function atualizar(Carro $carro, array $dados): Carro;
     public function excluir(Carro $carro): void;
-    public function marcarComoVendido(Carro $carro): void;
-    public function desmarcarComoVendido(Carro $carro): void;
+    public function marcarComoVendido(Carro $carro, Bool $vendido): void;
     public function listarDisponiveis(): Collection;
 }
