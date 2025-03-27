@@ -55,6 +55,7 @@
                 <a href="{{ route('marcas.index') }}" class="nav-link">Marcas</a>
                 <a href="{{ route('modelos.index') }}" class="nav-link">Modelos</a>
                 <a href="{{ route('carros.index') }}" class="nav-link">Carros</a>
+                <a href="{{ route('vendas.index') }}" class="nav-link">Vendas</a>
             </nav>
         </div>
 
