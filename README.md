@@ -1,6 +1,6 @@
 # Fabrica de Automóveis
 
-Este projeto foi desenvolvido utilizando **Laravel 9** e o banco de dados **MySQL**
+Este projeto foi desenvolvido utilizando **PHP 8**, **Laravel 9** e o banco de dados **MySQL**
 
 ---
 
