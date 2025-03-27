@@ -34,6 +34,9 @@ class ModeloService
 
     public function excluir(Modelo $modelo)
     {
+        if($modelo->carros()->exists()) {
+            throw new \Exception('O modelo possui carros cadastrados e não pode ser excluído.');
+        }
         return $this->modeloRepository->excluir($modelo);
     }
 }

@@ -7,6 +7,7 @@
     <h1>Lista de Modelos</h1>
     <a href="{{ route('modelos.create') }}" class="btn btn-primary">Novo Modelo</a>
     @include('partials.messages')
+    @include('partials.errors')
     <table class="table mt-4">
         <thead>
             <tr>
