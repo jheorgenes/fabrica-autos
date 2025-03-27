@@ -27,11 +27,11 @@
 
         <div class="mb-3">
             <label for="cor" class="form-label">Cor</label>
-            <select name="cor" id="cor" class="form-select" required>
-                <option value="">Selecione uma Cor</option>
-                <option value="Preto">Preto</option>
-                <option value="Branco">Branco</option>
-                <option value="Prata">Prata</option>
+            <select name="cor" class="form-control">
+                <option value="">Selecione</option>
+                @foreach(['Preto', 'Branco', 'Prata'] as $cor)
+                    <option value="{{ $cor }}" {{ old('cor') === $cor ? 'selected' : '' }}>{{ $cor }}</option>
+                @endforeach
             </select>
         </div>
 

@@ -15,7 +15,7 @@
             <select name="carro_id" id="carro_id" class="form-control" required>
                 <option value="">Selecione</option>
                 @foreach($carros as $carro)
-                    <option value="{{ $carro->id }}" data-cor="{{ $carro->cor }}">
+                    <option value="{{ $carro->id }}" data-cor="{{ $carro->cor }}" {{ old('carro_id') == $carro->id ? 'selected' : '' }}>
                         {{ $carro->placa }} - {{ $carro->modelo->marca->nome }} {{ $carro->modelo->nome }} ({{ $carro->cor }}) - R$ {{ $carro->preco }}
                     </option>
                 @endforeach
@@ -24,7 +24,17 @@
 
         <div id="opcionais-area" class="mb-3 d-none">
             <label class="form-label">Opcionais (somente para carros pretos)</label>
-            <div class="opcionais-wrapper"></div>
+            {{-- <div class="opcionais-wrapper"></div> --}}
+            <div class="opcionais-wrapper">
+                @if(old('opcionais'))
+                    @foreach(old('opcionais') as $opcional)
+                        <div class="d-flex align-items-center">
+                            <input type="text" name="opcionais[]" class="form-control mb-2" value="{{ $opcional }}">
+                            <button type="button" class="btn btn-sm btn-danger mb-2 ms-2" onclick="this.parentElement.remove()">Remover</button>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
             <button id="add-opcional" class="btn btn-secondary mt-2">Adicionar Opcional</button>
         </div>
 
@@ -40,6 +50,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const addBtn = document.getElementById('add-opcional');
     const selectCarro = document.getElementById('carro_id');
     const opcionaisArea = document.getElementById('opcionais-area');
+
+    const carroSelecionado = selectCarro.options[selectCarro.selectedIndex];
+    if (carroSelecionado && carroSelecionado.getAttribute('data-cor') === 'Preto') {
+        opcionaisArea.classList.remove('d-none');
+    }
 
     addBtn.addEventListener('click', function (e) {
         e.preventDefault();
