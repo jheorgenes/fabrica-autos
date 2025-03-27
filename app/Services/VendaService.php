@@ -39,7 +39,6 @@ class VendaService
         $precoOriginal = $carro->preco;
         $acrescimo = 0;
         $desconto = 0;
-        $opcionais = [];
         $cor = $carro->cor;
         $marca = $carro->modelo?->marca?->nome;
 
